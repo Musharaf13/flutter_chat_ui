@@ -478,6 +478,15 @@ class _ChatState extends State<Chat> {
           widget.showUserAvatars && message.author.id != widget.user.id
               ? min(constraints.maxWidth * 0.72, 440).floor()
               : min(constraints.maxWidth * 0.78, 440).floor();
+              
+      if (message.type == types.MessageType.file) {
+        return Center(
+          child: Text(
+            message.remoteId.toString(),
+            style: const TextStyle(color: Colors.grey),
+          ),
+        );
+      }
 
       return Message(
         key: ValueKey(message.id),
